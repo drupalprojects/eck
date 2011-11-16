@@ -339,13 +339,8 @@ function eck__entity__form($form, $form_state, $entity) {
 function eck__entity__form_submit($form, &$form_state) {
   $entity = $form_state['values']['entity'];
   
-  field_attach_submit($form['#entity_type'], $entity, $form, $form_state);
-
-  /*if (isset($form_state['field'])) {
-    foreach (array_keys($form_state['field']) as $field) {
-      $entity->{$field} = _field_unset_empty($field, $form_state['values'][$field]);
-    }
-  }*/
+  field_attach_form_validate($entity->entityType(), $entity, $form, $form_state);
+  field_attach_submit($entity->entityType(), $entity, $form, $form_state);
 
   $entity->save();
 
