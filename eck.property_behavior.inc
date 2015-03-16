@@ -234,8 +234,10 @@ function eck__property_behavior__form($form, &$state, $entity_type_name, $proper
         }
       }
 
-      $form['config_form_wrapper'] = array('#type' => 'fieldset', '#title' => "Configure Behavior");
-      $form['config_form_wrapper']['config_form'] = $config_form;
+      if (isset($config_form)) {
+        $form['config_form_wrapper'] = array('#type' => 'fieldset', '#title' => "Configure Behavior");
+        $form['config_form_wrapper']['config_form'] = $config_form;
+      }
 
       $form['submit'] = array(
         '#type' => 'submit',
